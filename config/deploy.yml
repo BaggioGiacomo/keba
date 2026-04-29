@@ -2,7 +2,7 @@
 service: keba
 
 # Name of the container image (use your-user/app-name on external registries).
-image: keba
+image: baggiogiacomo/keba
 
 # Deploy to these servers.
 servers:
