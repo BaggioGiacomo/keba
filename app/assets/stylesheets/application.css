@@ -46,6 +46,42 @@
     --grain-op:  0.25;
   }
 
+  /* Archivo - variable font, normal */
+  @font-face {
+    font-family: 'Archivo';
+    src: url('archivo-v25-latin-regular.woff2') format('woff2-variations');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* Archivo - variable font, italic */
+  @font-face {
+    font-family: 'Archivo';
+    src: url('archivo-v25-latin-italic.woff2') format('woff2-variations');
+    font-weight: 100 900;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  /* Archivo Black */
+  @font-face {
+    font-family: 'Archivo Black';
+    src: url('archivo-black-v23-latin-regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* Bebas Neue */
+  @font-face {
+    font-family: 'Bebas Neue';
+    src: url('bebas-neue-v16-latin-regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { background: var(--bg); color: var(--ink); }
 
@@ -330,7 +366,6 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     padding-top: 24px;
-    border-top: 1px solid var(--line);
   }
   .stat__num {
     font-family: 'Bebas Neue', sans-serif;
@@ -446,7 +481,7 @@
     font-size: 56px;
     color: var(--accent);
     line-height: 0.8;
-    margin-bottom: 4px;
+    margin-top: 8px;
   }
   .rule--wide { grid-column: span 6; }
   .rule--std { grid-column: span 4; }
