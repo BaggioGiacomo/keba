@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
+  # Bundle every document into a single ZIP download
+  get "documents/bundle.zip", to: "documents#bundle", as: :documents_bundle
+
   # Defines the root path route ("/")
   # root "posts#index"
   root "home#index"
