@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Keba" %></title>
+    <meta charset="UTF-8">
+    <title><%= content_for(:title) || "La Keba" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="<%= content_for(:description) || 'La Keba — il torneo in gabbia 3vs3. Iscriviti, gioca e porta la tua squadra alla vittoria.' %>">
+    <!-- PWA / Mobile -->
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Keba">
+    <meta name="application-name" content="La Keba">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#0f2e1a">
+    <!-- Open Graph -->
+    <meta property="og:title" content="<%= content_for(:title) || 'La Keba' %>">
+    <meta property="og:description" content="<%= content_for(:description) || 'La Keba — il torneo in gabbia 3vs3. Iscriviti, gioca e porta la tua squadra alla vittoria.' %>">
+    <meta property="og:image" content="<%= image_url('og-preview.png') %>">
+    <meta property="og:url" content="<%= request.original_url %>">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="La Keba">
+    <meta property="og:locale" content="it_IT">
+    <!-- Twitter/X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%= content_for(:title) || 'La Keba' %>">
+    <meta name="twitter:description" content="<%= content_for(:description) || 'La Keba — il torneo in gabbia 3vs3. Iscriviti, gioca e porta la tua squadra alla vittoria.' %>">
+    <meta name="twitter:image" content="<%= image_url('og-preview.png') %>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= yield :head %>
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
     <link rel="icon" href="/logo.png" type="image/png">
     <link rel="icon" href="/logo.svg" type="image/svg+xml">
@@ -17,10 +33,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,100..900;1,100..900&family=Bebas+Neue&display=swap" rel="stylesheet">
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <%= favicon_link_tag asset_path('logo-no-bg.png') %>
   </head>
   <body data-cc-id="cc-1" style="cursor: crosshair; font-family: Archivo;">
     <%= yield %>
