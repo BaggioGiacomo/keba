@@ -22,7 +22,7 @@ servers:
 #
 proxy:
   ssl: true
-  host: lakeba.duckdns.org
+  host: kebaalbina.it
 
 # Where you keep your container images.
 registry:
