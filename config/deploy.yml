@@ -22,7 +22,9 @@ servers:
 #
 proxy:
   ssl: true
-  host: kebaalbina.it
+  hosts:
+    - kebaalbina.it
+    - www.kebaalbina.it
 
 # Where you keep your container images.
 registry:
