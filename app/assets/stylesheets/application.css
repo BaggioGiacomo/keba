@@ -1096,7 +1096,7 @@ section {
   max-height: 100%;
   max-width: 100%;
   object-fit: contain;
-  border-radius: 10px;
+  padding-inline: 4px;
 }
 
 /* =========================
