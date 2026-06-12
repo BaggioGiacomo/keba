@@ -1028,50 +1028,75 @@ section {
 /* =========================
      SPONSORS
      ========================= */
-.sponsors__wrap {
-  border: 1px solid var(--line);
-  padding: 48px 32px;
+
+/* =========================
+     MARQUEE — shared base
+     ========================= */
+.mq {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
 }
-.sponsors__tier {
-  font-family: "Space Mono", monospace;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.24em;
-  color: var(--accent);
-  margin-bottom: 20px;
-}
-.sponsors__grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 4px;
-  border: 1px solid var(--line);
-  background: var(--line);
-}
-.sponsor {
-  aspect-ratio: 2.2 / 1;
-  background: var(--bg);
+.mq__track {
   display: flex;
   align-items: center;
+  width: max-content;
+  animation: mq-scroll 40s linear infinite;
+}
+.mq:hover .mq__track {
+  animation-play-state: paused;
+}
+.mq__track--reverse {
+  animation-direction: reverse;
+}
+.mq__item {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+}
+@keyframes mq-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mq__track {
+    animation: none;
+  }
+}
+
+/* ---- Carded chips ---- */
+.mq--cards {
+  padding: 6px 0;
+}
+.mq--cards .mq__track {
+  gap: 16px;
+}
+.mq--cards .mq__item {
+  height: 78px;
+  width: 150px;
   justify-content: center;
-  font-family: "Archivo Black", sans-serif;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--ink-dim);
-  transition:
-    color 0.2s,
-    background 0.2s;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
 }
-.sponsor:hover {
-  color: var(--accent);
-  background: var(--bg-deep);
-}
-.sponsors__grid--sm {
-  grid-template-columns: repeat(8, 1fr);
-  margin-top: 12px;
-}
-.sponsors__grid--sm .sponsor {
-  font-size: 11px;
+.mq--cards .mq__item img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 10px;
 }
 
 /* =========================
@@ -1236,14 +1261,6 @@ footer {
   /* Venue */
   .venue__grid {
     grid-template-columns: 1fr;
-  }
-
-  /* Sponsors */
-  .sponsors__grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .sponsors__grid--sm {
-    grid-template-columns: repeat(4, 1fr);
   }
 
   /* Contact */
@@ -1507,23 +1524,6 @@ footer {
     width: 100%;
     justify-content: center;
     margin-top: 8px;
-  }
-
-  /* ---------- SPONSORS ---------- */
-  .sponsors__wrap {
-    padding: 28px 16px;
-  }
-  .sponsors__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .sponsors__grid--sm {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .sponsor {
-    font-size: 12px;
-  }
-  .sponsors__grid--sm .sponsor {
-    font-size: 10px;
   }
 
   /* ---------- CONTACT ---------- */

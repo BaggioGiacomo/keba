@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   # Bundle every document into a single ZIP download
   get "documents/bundle.zip", to: "documents#bundle", as: :documents_bundle
 
+  # Full-screen screensaver / info board
+  get "screensaver", to: "home#screensaver", as: :screensaver
+
   # Defines the root path route ("/")
   # root "posts#index"
   root "home#index"

@@ -1,0 +1,352 @@
+<% content_for :title, "La Keba · The Cage — News Alert" %>
+<% content_for :head do %>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<% end %>
+<%
+  sponsor_logos = %w[
+    sponsor/ardea.svg sponsor/avis.png sponsor/betti.jpeg sponsor/ca-dei-falchi.svg
+    sponsor/feletto.jpeg sponsor/gilma.jpeg sponsor/mz.svg
+    sponsor/perin.jpeg sponsor/pessotto.png sponsor/pizzalandia.jpeg
+    sponsor/saiel.jpeg sponsor/solero.png sponsor/casagrande.svg sponsor/seri-jolly.jpeg sponsor/cantina.jpeg
+    sponsor/corazza.svg
+  ]
+
+  rigorata = [
+    ["🗓️", "Ogni sera per tutta la durata del torneo"],
+    ["⚽", "5 rigori dalla linea di centrocampo"],
+    ["⏱️", "1 minuto di tempo"],
+    ["🧱", "Rimbalzo obbligatorio su almeno una sponda"],
+    ["🎟️", "Costo d'iscrizione 1€ per 5 tiri (ripetibile)"],
+    ["🎉", "Domenica 28 finale tra i migliori posizionati"],
+    ["🏆", "Premio buono regalo"]
+  ]
+
+  koppa = [
+    ["🪑", "Troppo scarsi per vincere il torneo?"],
+    ["💪", "Troppo forti sia fuori che dentro il campo?"],
+    ["🥵", "O semplicemente tanto assetati?"],
+    ["🍺", "Il vostro campo di battaglia è pronto"],
+    ["📣", "Supportate la vostra squadra fuori dal campo"],
+    ["🍻", "Ai più assetati spetterà un ricco premio"]
+  ]
+%>
+<div class="saver" data-controller="" data-target-date="2026-06-25T18:00:00">
+  <header class="saver__top">
+    <div class="saver__brand">
+      <%= image_tag "logo-no-bg.png", alt: "KEBA Logo", class: "saver__logo" %>
+      <span class="saver__brand-name">KEBA</span>
+      <span class="saver__brand-sub">— The Cage —</span>
+    </div>
+    <div class="saver__titlewrap">
+      <h1 class="saver__title">
+        <span class="saver__title-main">LA&nbsp;KEBA</span>
+        <div class="saver__title-meta">
+          <span class="saver__date">Dal 25 al 28 Giugno</span>
+          <span class="saver__title-badge">The Cage</span>
+        </div>
+      </h1>
+    </div>
+    <div class="cd" aria-live="polite">
+      <span class="cd__eyebrow">Al via tra</span>
+      <div class="cd__row">
+        <div class="cd__unit"><span class="cd__num" data-cd="days">--</span><span class="cd__lbl">Giorni</span></div>
+        <span class="cd__sep">:</span>
+        <div class="cd__unit"><span class="cd__num" data-cd="hours">--</span><span class="cd__lbl">Ore</span></div>
+        <span class="cd__sep">:</span>
+        <div class="cd__unit"><span class="cd__num" data-cd="minutes">--</span><span class="cd__lbl">Minuti</span></div>
+        <span class="cd__sep">:</span>
+        <div class="cd__unit"><span class="cd__num" data-cd="seconds">--</span><span class="cd__lbl">Secondi</span></div>
+      </div>
+    </div>
+  </header>
+  <div class="saver__cols">
+    <section class="saver__col">
+      <h2 class="saver__coltitle display">Rigorata</h2>
+      <ul class="saver__list">
+        <% rigorata.each do |icon, text| %>
+          <li class="saver__list-item">
+            <span class="saver__ico"><%= icon %></span>
+            <span><%= text %></span>
+          </li>
+        <% end %>
+      </ul>
+    </section>
+    <section class="saver__col">
+      <h2 class="saver__coltitle display">Koppa Kiosco</h2>
+      <ul class="saver__list">
+        <% koppa.each do |icon, text| %>
+          <li class="saver__list-item">
+            <span class="saver__ico"><%= icon %></span>
+            <span><%= text %></span>
+          </li>
+        <% end %>
+      </ul>
+    </section>
+  </div>
+  <div class="saver__sponsors">
+    <div class="mq mq--cards">
+      <div class="mq__track">
+        <% (sponsor_logos + sponsor_logos).each do |logo| %>
+          <div class="mq__item"><%= image_tag logo %></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  html, body { overflow: hidden; }
+  body::before { z-index: 1; }
+
+  .saver {
+    position: fixed;
+    inset: 0;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: clamp(16px, 3vh, 40px);
+    padding: clamp(16px, 3vh, 48px) clamp(20px, 4vw, 80px);
+    overflow: hidden;
+    background:
+      linear-gradient(color-mix(in oklab, var(--bg) 80%, transparent), color-mix(in oklab, var(--bg) 80%, transparent)),
+      var(--bg) url(<%= image_url("screensaver-bg.png") %>) center / cover no-repeat;
+    color: var(--ink);
+  }
+  .saver *, .saver *::before, .saver *::after { box-sizing: border-box; }
+  .saver > * { position: relative; z-index: 2; }
+
+  /* ---------- header ---------- */
+  .saver__top {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: start;
+    gap: clamp(12px, 2vw, 32px);
+  }
+  .saver__brand {
+    justify-self: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+  .saver__logo {
+    height: clamp(44px, 8vh, 96px);
+    width: auto;
+  }
+  .saver__brand-name {
+    font-family: "Anton", "Archivo Black", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    line-height: 0.9;
+    font-size: 50px;
+    color: var(--accent);
+  }
+  .saver__brand-sub {
+    font-family: "Archivo", sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: clamp(9px, 1vw, 14px);
+    color: var(--accent);
+  }
+  .saver__titlewrap { text-align: center; }
+  .saver__title {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(4px, 0.8vh, 12px);
+    line-height: 0.85;
+  }
+  .saver__title-main {
+    font-family: "Anton", "Archivo Black", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    font-size: clamp(56px, 12vw, 190px);
+    color: var(--accent);
+  }
+  .saver__title-badge {
+    font-family: "Anton", "Archivo Black", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    font-size: clamp(18px, 3vw, 48px);
+    line-height: 1;
+    color: var(--bg);
+    background: var(--accent);
+    padding: 0.12em 0.3em;
+    border-radius: 4px;
+  }
+  .saver__title-meta {
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: -11px;
+    padding-inline: 5px;
+  }
+  .saver__date {
+    font-family: sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: clamp(13px, 2vw, 28px);
+    color: var(--ink);
+  }
+
+  /* ---------- countdown (top-right pill) ---------- */
+  .cd {
+    justify-self: end;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    padding: clamp(8px, 1.2vh, 14px) clamp(12px, 1.4vw, 20px);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: color-mix(in oklab, var(--bg-deep) 55%, transparent);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
+  }
+  .cd__eyebrow {
+    font-family: "Archivo", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    font-size: clamp(8px, 0.8vw, 11px);
+    color: var(--accent);
+  }
+  .cd__row {
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(4px, 0.6vw, 8px);
+  }
+  .cd__unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: clamp(28px, 3.2vw, 46px);
+  }
+  .cd__num {
+    font-family: "Bebas Neue", "Archivo Black", sans-serif;
+    font-size: clamp(24px, 3vw, 44px);
+    line-height: 1;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .cd__lbl {
+    font-family: "Archivo", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    font-size: clamp(8px, 0.8vw, 11px);
+    color: var(--ink-dim);
+  }
+  .cd__sep {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(20px, 2.4vw, 36px);
+    color: var(--accent);
+    line-height: 1;
+    animation: cd-blink 1s steps(1) infinite;
+  }
+  @keyframes cd-blink {
+    50% { opacity: 0.2; }
+  }
+
+  /* ---------- columns ---------- */
+  .saver__cols {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: clamp(16px, 3vw, 48px);
+    min-height: 0;
+  }
+  .saver__col {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    padding: clamp(18px, 3vh, 40px) clamp(18px, 2.5vw, 44px);
+  }
+  .saver__coltitle {
+    font-size: clamp(30px, 5vw, 64px);
+    color: var(--accent);
+    text-align: center;
+    position: relative;
+    padding-bottom: clamp(10px, 1.6vh, 18px);
+  }
+  .saver__coltitle::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: clamp(40px, 6vw, 80px);
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+  .saver__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: clamp(8px, 1.6vh, 18px);
+    flex: 1;
+  }
+  .saver__list-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(10px, 1vw, 16px);
+    font-family: sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    font-size: clamp(13px, 1.5vw, 22px);
+    line-height: 1.2;
+  }
+  .saver__ico {
+    flex: 0 0 auto;
+    font-size: clamp(18px, 2vw, 30px);
+    line-height: 1;
+  }
+
+  /* ---------- sponsors ---------- */
+  .saver__sponsors { width: 100%; min-width: 0; overflow: hidden; }
+
+  @media (max-width: 820px) {
+    .saver__top { grid-template-columns: 1fr; justify-items: center; gap: 12px; }
+    .saver__brand, .cd { justify-self: center; }
+    .saver__cols { grid-template-columns: 1fr; }
+  }
+</style>
+<script>
+  (function () {
+    var root = document.querySelector(".saver");
+    if (!root) return;
+    var target = new Date(root.getAttribute("data-target-date")).getTime();
+    var fields = {
+      days: root.querySelector('[data-cd="days"]'),
+      hours: root.querySelector('[data-cd="hours"]'),
+      minutes: root.querySelector('[data-cd="minutes"]'),
+      seconds: root.querySelector('[data-cd="seconds"]')
+    };
+
+    function pad(n) { return (n < 10 ? "0" : "") + n; }
+
+    function tick() {
+      var diff = target - Date.now();
+      if (diff < 0) diff = 0;
+      var totalSeconds = Math.floor(diff / 1000);
+      var days = Math.floor(totalSeconds / 86400);
+      var hours = Math.floor((totalSeconds % 86400) / 3600);
+      var minutes = Math.floor((totalSeconds % 3600) / 60);
+      var seconds = totalSeconds % 60;
+      fields.days.textContent = days;
+      fields.hours.textContent = pad(hours);
+      fields.minutes.textContent = pad(minutes);
+      fields.seconds.textContent = pad(seconds);
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  })();
+</script>

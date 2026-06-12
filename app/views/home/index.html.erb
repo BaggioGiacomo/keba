@@ -1,3 +1,12 @@
+<%
+  sponsor_logos = %w[
+    sponsor/ardea.svg sponsor/avis.png sponsor/betti.jpeg sponsor/ca-dei-falchi.svg
+    sponsor/feletto.jpeg sponsor/gilma.jpeg sponsor/mz.svg
+    sponsor/perin.jpeg sponsor/pessotto.png sponsor/pizzalandia.jpeg
+    sponsor/saiel.jpeg sponsor/solero.png sponsor/casagrande.svg sponsor/seri-jolly.jpeg sponsor/cantina.jpeg
+    sponsor/corazza.svg
+  ]
+%>
 <nav class="nav">
   <a class="nav__brand" href="#top">
     <%= image_tag "logo-no-bg.png", alt: "KEBA Logo", class: "nav__logo" %>
@@ -12,7 +21,6 @@
   </div>
   <a href="#contact" class="nav__cta">Iscriviti →</a>
 </nav>
-<!-- =============== HERO =============== -->
 <section class="hero" id="top">
   <div class="hero__bg"></div>
   <div class="chainlink" style="opacity:.08"></div>
@@ -71,6 +79,13 @@
 </div>
 <!-- =============== RULES =============== -->
 <section id="rules">
+  <div class="mq mq--cards" style="margin-top:-80px;margin-bottom:40px;">
+    <div class="mq__track mq__track--reverse">
+      <% (sponsor_logos + sponsor_logos).each do |logo| %>
+        <div class="mq__item"><%= image_tag logo %></div>
+      <% end %>
+    </div>
+  </div>
   <div class="section__head">
     <div class="section__num">01</div>
     <div>
@@ -371,8 +386,7 @@
     </div>
   </div>
 </section>
-<!-- =============== SPONSORS =============== -->
-<%# <section id="sponsors">
+<section id="sponsors">
   <div class="section__head">
     <div class="section__num">06</div>
     <div>
@@ -380,30 +394,14 @@
       <div class="section__sub">// Chi tiene in piedi la gabbia</div>
     </div>
   </div>
-  <div class="sponsors__wrap">
-    <div class="sponsors__tier">★ Main Sponsor</div>
-    <div class="sponsors__grid">
-      <div class="sponsor">CEMENTARIA</div>
-      <div class="sponsor">BAR DEL MURO</div>
-      <div class="sponsor">MOTO 88</div>
-      <div class="sponsor">PIZZERIA AL 12</div>
-      <div class="sponsor">STUDIO GRAFICO</div>
-      <div class="sponsor">RADIO CENTRO</div>
-    </div>
-    <div class="sponsors__tier" style="margin-top:40px;">// Partner Tecnici</div>
-    <div class="sponsors__grid sponsors__grid--sm">
-      <div class="sponsor">IDRAULICO S.</div>
-      <div class="sponsor">PANIFICIO DI VIA 4</div>
-      <div class="sponsor">TABACCHI ANGOLO</div>
-      <div class="sponsor">TAXI 06</div>
-      <div class="sponsor">LAVAGGIO EXPRESS</div>
-      <div class="sponsor">OTTICA MATTEI</div>
-      <div class="sponsor">BAR SPORT</div>
-      <div class="sponsor">EDICOLA</div>
+  <div class="mq mq--cards">
+    <div class="mq__track">
+      <% (sponsor_logos + sponsor_logos).each do |logo| %>
+        <div class="mq__item"><%= image_tag logo %></div>
+      <% end %>
     </div>
   </div>
-</section> %>
-<!-- =============== CONTACT =============== -->
+</section>
 <section id="contact">
   <div class="chainlink"></div>
   <span class="eyebrow">// Contatti · Iscrizioni · Info</span>
